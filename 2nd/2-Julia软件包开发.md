@@ -38,7 +38,6 @@ Electrical.jl
 ├── LICENSE.md
 ├── Project.toml
 ├── README.md
-├── REQUIRE
 ├── docs
 │   ├── make.jl
 │   └── src
@@ -85,8 +84,112 @@ Electrical.jl
 
 ## 开发、测试、编写文档
 
-根据软件包的具体功能，编写相应的函数，并编写测试文件。
+根据软件包的具体功能，编写相应的函数，并编写测试文件。 
 
-文档使用示例：
+文档主要使用[Documenter.jl](https://documenter.juliadocs.org/stable/)软件包，它可以根据源代码中的注释自动生成文档。使用示例：
+
+给函数编写文档：
+
+```julia
+"""
+    Analog(name::String, value::Float64)
+
+创建一个模拟量对象。
+"""
+struct Analog
+    name::String
+    value::Float64
+end
 
 
+"""
+    analog(name::String)
+
+外部构造函数：创建一个模拟量对象，初始值为0。
+"""
+function analog(name::String)
+    Analog(name, 0)
+end
+
+"""
+    analog()
+
+外部构造函数：创建一个匿名模拟量对象，初始值为0。
+"""
+function analog()
+    return Analog("", 0)
+end
+```
+
+在`test\runtests.jl`中添加
+
+```julia
+using Electrical
+using Test
+
+@testset "Analog" begin
+    @test analog("A") == Analog("A", 0)
+    @test analog() == Analog("", 0)
+end
+```
+
+在`docs\src\index.md`中添加
+
+```markdown
+# Electrical
+
+Documentation for [Electrical](https://github.com/jake484/Electrical.jl).
+
+## 文档内容
+
+```@contents
+Pages = ["index.md"]
+```
+
+## 索引
+
+```@index
+Pages = ["index.md"]
+```
+
+## 函数与类型
+
+```@autodocs
+Modules = [Electrical]
+```
+```
+
+在`docs\make.jl`中添加
+
+```julia
+pages=[
+    "Home" => "index.md",
+    "Test" => "test/test.md",
+],
+```
+
+在`docs\src\test\test.md`中添加
+
+```markdown
+
+# 测试
+
+## 测试1
+
+```@example
+using Test
+@testset "测试1" begin
+    @test 1 == 1
+end
+```
+
+## 测试2
+
+```@example
+sin(1)
+```
+
+```
+
+
+更多内容请参考[Documenter.jl](https://documenter.juliadocs.org/stable/)的文档。
