@@ -5,6 +5,10 @@
 3. 添加至官方注册表
 4. 开发、测试、编写文档
 
+## Gitkraken
+
+[Git图形化界面](https://www.gitkraken.com/)，可免费使用，[Github学生包](https://education.github.com/discount_requests/application)可使用Pro
+
 ## 创建软件包
 
 软件包创建一般使用PkgTemplates.jl包，它提供了一些模板，可以快速创建一个软件包。
