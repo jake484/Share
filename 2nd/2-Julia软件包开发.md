@@ -1,9 +1,13 @@
 # 软件包开发
 
 1. 创建软件包
-2. 发布至github并初始化相关配置
+2. 初始化相关配置并发布至github
 3. 添加至官方注册表
 4. 开发、测试、编写文档
+
+## Gitkraken
+
+[Git图形化界面](https://www.gitkraken.com/)，可免费使用，[Github学生包](https://education.github.com/discount_requests/application)可使用Pro
 
 ## 创建软件包
 
@@ -60,7 +64,7 @@ Electrical.jl
 - src：源代码文件夹
 - test：测试文件夹
 
-## 发布至github并初始化相关配置
+## 初始化相关配置并发布至github
 
 1. 在github上创建一个新的仓库，例如Electrical.jl
 2. 简单创建源代码文件src/Electrical.jl/Analog/analog.jl，并编写函数
