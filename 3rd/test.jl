@@ -13,13 +13,13 @@ rc_eqs = [
 @named rc_model = compose(_rc_model, [resistor, capacitor, source, ground])
 sys = structural_simplify(rc_model)
 equations(sys) |> display
-prob = ODAEProblem(sys, [capacitor.v => 0.0], (0, 10.0))
+prob = ODEProblem(sys, [capacitor.v => 0.0], (0, 10.0))
 sol_mtk = solve(prob, Tsit5(), saveat=0.1)
 @test sol.retcode == ReturnCode.Success
 # 显示所有状态
-for state in states(rc_model)
-    println(state, " = ", sol[state][1:2])
-end
+# for state in states(rc_model)
+#     println(state, " = ", sol[state][1:2])
+# end
 
 # 求解步长设置
 
@@ -39,7 +39,7 @@ sys = structural_simplify(model)
 # 生成函数语法树
 ModelingToolkit.generate_function(sys)
 # 导出
-open("sys.jl", "w") do io
+open("func.jl", "w") do io
     write(io, string(ModelingToolkit.generate_function(sys)[2]))
 end
 
@@ -52,3 +52,5 @@ end
 #     [source.p.v, capacitor.v]
 # )
 
+# modelingtoolkitize 从函数编译至MTK
+# sys = modelingtoolkitize(prob)

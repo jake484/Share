@@ -69,6 +69,12 @@ function de_test(f, u0s=[0.0], paras=[3.0, 2.0, 1.0])
     @test sol.retcode == ReturnCode.Success
     return nothing
 end
+
+function f2mtk(f, u0s=[0.0], paras=[3.0, 2.0, 1.0])
+    prob = ODEProblem(f, u0s, (0, 10.0), paras)
+    return modelingtoolkitize(prob)
+end
+
 write_mult_func()
 f = read_mult_func()
 using BenchmarkTools
@@ -77,3 +83,6 @@ using BenchmarkTools
 @info "正在测试de_test..."
 @btime de_test(f, zeros(LEN), vcat(1.0 * collect(1:LEN), 1.0 * collect(1:LEN), 1.0)) # 39.000 μs (217 allocations: 118.12 KiB)
 @info "测试完成！"
+
+
+# sys = f2mtk(f, zeros(LEN), vcat(1.0 * collect(1:LEN), 1.0 * collect(1:LEN), 1.0))
