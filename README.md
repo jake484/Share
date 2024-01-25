@@ -16,6 +16,10 @@
 1. 建库
 2. 导出导入mtk方程，并测试比较速度
 3. 函数简介
+4. 绘图库
+   - [Plots.jl](https://docs.juliaplots.org/latest/)
+   - [Makie.jl](https://docs.makie.org/stable/)
+   - [PlotlyJS.jl](https://plotly.com/julia/)
 
 ## 4th
 
