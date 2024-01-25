@@ -143,20 +143,14 @@ rc_eqs = [
 ]
 @named _rc_model = ODESystem(rc_eqs, t)
 @named rc_model = compose(_rc_model, [resistor, capacitor, source, ground])
-sys = structural_simplify(rc_model)
-u0 = [capacitor.v => 0.0]
-prob = ODAEProblem(sys, u0, (0, 10.0))
-sol = solve(prob, Tsit5(), saveat=0.1)
 
-# 组合元件
-@named r = Resistor(R=1.0)
-@named c = Capacitor(C=1.0)
-con = [
-    connect(r.p, c.p)
-    connect(r.n, c.n)
-]
-@named _model = ODESystem(rc_eqs, t)
-@named model = compose(_model, [resistor, capacitor, source, ground])
-sys = structural_simplify(model)
-# 查看电容电压变化
-# sol(1.35234)
+using BenchmarkTools
+
+@btime sys = structural_simplify(rc_model);
+u0 = [capacitor.v => 0.0]
+@btime prob = ODEProblem(sys, u0, (0, 10.0));
+@btime sol = solve(prob, Tsit5(), saveat=0.1);
+
+@btime for s in states(rc_model)
+    sol.t .* 10 .+1
+end
