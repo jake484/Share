@@ -14,13 +14,18 @@
 ## 3rd
 
 1. 建库
+2. 函数功能分解
+
+## 4th
+
+1. 组件更新为新版
 2. 导出导入mtk方程，并测试比较速度
-3. 函数简介
-4. 绘图库
+3. 绘图库
    - [Plots.jl](https://docs.juliaplots.org/latest/)
    - [Makie.jl](https://docs.makie.org/stable/)
    - [PlotlyJS.jl](https://plotly.com/julia/)
+4. MTK调用外部函数方法
 
-## 4th
+## 5th
 
 Todo
