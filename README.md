@@ -18,15 +18,15 @@
 
 ## 4th
 
-1. 导出导入mtk方程，并测试比较速度
-2. 新版@mtkmodel测试
-3. 绘图库
-   - [Plots.jl](https://docs.juliaplots.org/latest/)
-   - [Makie.jl](https://docs.makie.org/stable/)
-   - [PlotlyJS.jl](https://plotly.com/julia/)
+1. 导出导入mtk方程
+2. 较大规模化简测试
+3. 大规模@mtkmodel宏测试
 
 ## 5th
 
-1. MTK调用外部函数方法
-2. 事件处理
-3. 最优化
+1. 绘图库
+   - [Plots.jl](https://docs.juliaplots.org/latest/)
+   - [Makie.jl](https://docs.makie.org/stable/)
+   - [PlotlyJS.jl](https://plotly.com/julia/)
+2. MTK调用外部函数方法
+3. 事件处理
