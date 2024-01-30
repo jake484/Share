@@ -20,13 +20,13 @@
 
 1. 导出导入mtk方程
 2. 较大规模化简测试
-3. 大规模@mtkmodel宏测试
 
 ## 5th
 
-1. 绘图库
+1. 大规模@mtkmodel宏测试
+2. 绘图库
    - [Plots.jl](https://docs.juliaplots.org/latest/)
    - [Makie.jl](https://docs.makie.org/stable/)
    - [PlotlyJS.jl](https://plotly.com/julia/)
-2. MTK调用外部函数方法
-3. 事件处理
+3. MTK调用外部函数方法
+4. 事件处理

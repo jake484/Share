@@ -19,11 +19,11 @@ sys = structural_simplify(rc_model)
 
 equations(sys) |> display
 prob = ODEProblem(sys, [capacitor.v => 0.0], (0, 10.0))
-sol_mtk = solve(prob, Tsit5(), saveat=0.1)
+sol = solve(prob, Tsit5(), saveat=0.1)
 @test sol.retcode == ReturnCode.Success
 
 # 生成函数语法树
-ModelingToolkit.generate_function(sys)
+a = ModelingToolkit.generate_function(sys)
 # 导出
 open("func.jl", "w") do io
     write(io, string(ModelingToolkit.generate_function(sys)[2]))

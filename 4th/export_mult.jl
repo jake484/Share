@@ -84,5 +84,13 @@ using BenchmarkTools
 @btime de_test(f, zeros(LEN), vcat(1.0 * collect(1:LEN), 1.0 * collect(1:LEN), 1.0)) # 39.000 μs (217 allocations: 118.12 KiB)
 @info "测试完成！"
 
+ff = read_func()
+sys2 = f2mtk(ff)
 
-# sys = f2mtk(f, zeros(LEN), vcat(1.0 * collect(1:LEN), 1.0 * collect(1:LEN), 1.0))
+open("func2.jl", "w") do io
+    write(io,string(equations(sys)[1]))
+end
+
+
+s = read("func2.jl", String)
+Meta.parse(s) |> dump
